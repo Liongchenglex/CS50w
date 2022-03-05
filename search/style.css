@@ -1,0 +1,104 @@
+.banner{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 1%;
+    padding: 5px;
+    /* border: 2px black solid; */
+
+}
+
+.banner a{
+    margin-left: 30px;
+    text-decoration: none;
+    color: black;
+    /* margin: 0 20px; */
+}
+.profile{
+    /* border: black solid 1px ; */
+    position: relative;
+    top: -5px;
+    right: 0;
+    border-radius: 20px ;
+    background-color: green;
+    height: 35px;
+    width: 35px;
+    margin-right: 0%;
+}
+
+/* -----------body ----------------- */
+
+#main{
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+#main .container{
+    position: absolute;
+    top: 18%;
+    text-align: center;
+    height: 50%;
+}
+
+img{
+    width: 40%;
+}
+
+/* ================ form1 =============== */
+.form1{
+    margin: 20px 15%;
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    width: 70%;
+    border: 1px solid rgba(99, 99, 99, 0.2);
+    
+}
+.form1:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.form1 input{
+    width: 90%;
+    height: 30px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+.form1 .icon{
+    color: rgba(45, 36, 36, 0.2);
+}
+
+
+
+
+/* ============= form2 =================== */
+.button{
+    width: 15%;
+    margin: 30px 25%;
+}
+.button{
+    margin: 5px 10px;
+    border: none;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background: rgba(195, 193, 193, 0.2);
+}
+
+
+.button:hover{
+    border:rgba(25, 24, 24, 0.2) solid 0.5px ;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.lex{
+    margin-top: 30px;
+}
+
+/* .box{
+    border: black solid 1px;
+} */
