@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style>
+    img{
+        max-width:230px;
+        max-height:100px;
+        width: auto;
+        height: auto;
+        margin: 0 50px;
+    }
+    .container{
+        border-bottom: solid black 2px;
+        margin: 20px 0;
+        padding: 30px;
+    }
+    .info{
+        margin: 0 50px;
+    }
+</style>
+ <h2>Your wishlist</h2>
+ {% for item in wishlist %}
+ <div class="container row" style="background-color:azure;"> 
+     <a href="{% url 'auctions:listings' item.id %}" class="col-5">
+         {% if item.image %}
+         <img src="{{ item.image.url }}" alt="images">  
+         {% endif %}
+     </a>
+     <div class='col-5 info'>
+         <a href="{% url 'auctions:listings' item.id %}">{{ item.item_name }}</a>
+         <div> ${{ item.price }}</div>
+         <div> By: {{ item.creator }}</div>
+         <div> {{ item.date_uploaded|date:'M d, Y H:i' }}</div>
+     </div>
+ </div>
+ <form action="{% url 'auctions:remove_wishlist' item.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Remove from wishlist" class="btn btn-primary">
+</form>
+{% empty %}
+    <p>Nothing has been added to your wishlist</p>
+ {% endfor %}
+{% endblock%}

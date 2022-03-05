@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+    /* border-box tells the browser to account for any border and padding in the values you specify for an element's width and height. If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added,  */
+            box-sizing: border-box;
+        }  
+        .banner{
+            text-align: end;
+            margin: 10px 20px;
+            padding-top: 10px;
+            padding-right: 50px;
+ 
+        }
+
+        .banner a{
+            text-decoration: none;
+            color: black;
+        }
+        img{
+            width: 10%;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+        }
+        .profile{
+             /* border: black solid 1px ; */
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border-radius: 20px ;
+            background-color: green;
+            height: 35px;
+            width: 35px;
+        }
+        .h2{
+            color: rgb(219, 36, 36);
+            margin: 30px 0 20px 0;
+            padding-left: 40px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: rgba(101, 96, 96, 0.2) solid 1px;
+            font-size: 20px;
+        }
+        .container{
+            border-bottom: rgba(101, 96, 96, 0.2) solid 1px;
+        }
+ 
+        .input-box{
+            width: 95%;
+            height:30px;
+            margin: 5px 30px 5px 0;
+            padding: 5px 0 5px 10px;
+            font-size: 14px;
+            border:rgba(25, 24, 24, 0.2) solid 0.5px ;
+            
+        }
+        .row{
+            margin: 15px; 
+        }
+
+
+        .col3{
+            font-size: 12px;
+            padding: 0;
+            color: rgb(139, 135, 135);
+        }
+        .col1{
+            font-size: 12px;
+            padding: 0;
+        }
+        .col2{
+            padding: 0;
+            margin-left: 0;
+        }
+        .head1{
+            font-size: 15px;
+        }
+        .head3{
+            font-size: 13px;
+            color: rgb(139, 135, 135);
+        }
+
+        .container2{
+            padding: 20px;
+            border-bottom: rgba(101, 96, 96, 0.2) solid 1px;
+        }
+        .btn {
+            -webkit-border-radius: 11;
+            -moz-border-radius: 11;
+            border-radius: 11px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            background: #50adeb;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+            font-size: 15px;
+            margin: 50px 30px 0 0;
+            position: absolute;
+            right: 15%;
+
+            }
+
+        .btn:hover {
+            background: #2d9be0;
+            text-decoration: none;
+            }
+    </style>
+
+    <body>
+        <div class='banner'>
+            <a href="index.html"><img src="http://p8cdn4static.sharpschool.com/UserFiles/Servers/Server_1015762/Image/Google/Google.png" alt="google"></a>
+            <a href="index.html">Web Search</a>
+            <a href="index.html"><div class="profile"></div></a>
+        </div>
+        <section id="main">
+            <div class='h2'>Advanced Search</div>
+            
+                <form class='container2' action="https://www.google.com/search">
+                    <div class='row header-row'>
+                        <div class='col-2 col1 head1'>Find pages with...</div>
+                        <div class="col-6 col2 head2"></div>
+                        <div class="col-4 col3 head3">To do this in the search box</div>
+                    </div>
+                    <div class='row row1'>
+                        <div class='col-2 col1'>all these words...</div>
+                        <div class="col-6 col2">
+                            <input class='input-box' type="text" name="as_q">
+                        </div>
+                        <div class="col-4 col3">Type the important words: tri-colour rat terrier</div>
+                    </div>
+                    <div class='row row2'>
+                        <div class='col-2 col1'>this exact word or phrase:</div>
+                        <div class="col-6 col2">
+                            <input class='input-box' type="text" name="as_epq">
+                        </div>
+                        <div class="col-4 col3">Put exact words in quotes: "rat terrier</div>
+                    </div>
+                    <div class='row row3'>
+                        <div class='col-2 col1'>any of these words:</div>
+                        <div class="col-6 col2">
+                            <input class='input-box' type="text" name="as_oq">
+                        </div>
+                        <div class="col-4 col3">Type OR between all the words you want: miniature OR standard</div>
+                    </div>
+                    <div class='row row4'>
+                        <div class='col-2 col1'>none of these words:.</div>
+                        <div class="col-6 col2">
+                            <input class='input-box' type="text" name="as_eq">
+                        </div>
+                        <div class="col-4 col3">Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</div>
+                    </div>
+                    <input class='btn' type="submit" value="Advanced Search">
+                </form>  
+        </section>
+    </body>
+</html>
+

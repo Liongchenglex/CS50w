@@ -1,0 +1,104 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{ item.item_name }}</h2>
+
+    <img src="{{ item.image.url }}" alt="images">
+    {% if item.has_ended %}
+        {% if bids >= 1 %}
+            <p>The Auction has ended</p>
+            <p>The winner is {{ person }}</p>
+            <p>At ${{current_bid}}</p>
+            {% if user.id == item.creator.id %}
+            <form action="{% url 'auctions:delete' item.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Delete Auction" class="btn btn-primary">
+            </form>
+            {% endif %}
+        {% else %}
+            <p>The Auction has ended</p>
+            {% if user.id == item.creator.id %}
+            <form action="{% url 'auctions:delete' item.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Delete Auction" class="btn btn-primary">
+            </form>
+            {% endif %}
+        {% endif %}
+    {% else %}
+
+
+    
+    {% if user.is_authenticated %}
+        <form action="{% url 'auctions:add_wishlist' item.id %}" method="POST">
+            {% csrf_token %}
+            {% if item in request.user.watchlist.all %}
+                <input type="submit" value="Remove from wishlist" class="btn btn-primary">
+            {% else %}
+                <input type="submit" value="Add to wishlist" class="btn btn-primary">
+            {% endif %}
+        </form>
+
+    {% endif %}
+
+
+        <p>Starting Price: ${{ item.price|floatformat:2 }}</p>
+        <br>
+        {% if item.description %}
+            <p>Description: {{ item.description }} </p>
+            <br>
+        {% endif %}
+        <p>Date Created: {{ item.date_uploaded|date:'M d, Y H:i' }}</p>
+        <br>
+        <p>Listed By: {{ item.creator }}</p>
+        <br>
+        <p>Category: {{item.category}}</p>
+        <p>Duration of auction: {{ item.duration }} days</p>
+        <br>
+        <p>total bids : {{ bids }}</p>
+        {% if bids >= 1 %}
+            <p>Current Bid by {{ person }} = ${{ current_bid|floatformat:2 }}</p>
+        {% else %}
+            <p>No bids yet</p>
+        {% endif %}
+
+
+        {% if user.is_authenticated %}
+
+            <form action="{% url 'auctions:listings' item.id %}" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Place Bid">
+            </form>
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+
+
+            <form action="{% url 'auctions:comments' item.id %}" method="POST">
+                {% csrf_token %}
+                <p>Add new Comment:</p>
+                {{ form2 }}
+                <input type="submit" value="Post Comment">
+            </form>
+
+            {% if total_comments > 0 %}
+                {% for comment in comments %}
+                    <div>{{ comment.message }}</div>
+                    <p>Made by {{comment.user }} at {{ comment.time}}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% if user.id == item.creator.id %}
+            <form action="{% url 'auctions:end_auction' item.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="End Auction" class="btn btn-primary">
+            </form>
+            {% endif %}
+
+   
+    {% endif %}
+{% endif %}
+       
+{% endblock %}

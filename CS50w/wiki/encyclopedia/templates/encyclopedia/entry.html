@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{entry}}
+{% endblock %}
+
+{% load markdown_extras %}
+
+{% block body %}
+    {{contents| markdown | safe}}
+    <br>
+    <a href="/edit/{{ entry }}">Edit Page</a>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <style>
+        .row{
+            margin: 20px 0;
+        }
+        .image{
+            margin: 15px 10px;
+            
+        }
+        .container{
+            text-align: center;
+            padding: 20px 0;
+        }
+        .btn:hover{
+            background-color:blue;
+            
+        }
+
+    </style>
+    <h2>Create Listings</h2>
+
+    <form action="{% url 'auctions:create' %}" method="POST" enctype="multipart/form-data" class='form'>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3">Item Name:</div>
+            <div class="col-6">{{ form.item_name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Starting Price:</div>
+            <div class="col-6">{{ form.price }}</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Details:</div>
+            <div class="col-6">{{ form.description }}</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Category:</div>
+            <div class="col-6">{{ form.category }}</div>
+        </div>
+        <div class="row">
+            <div class="col-3">Duration:</div>
+            <div class="col-6">{{ form.duration  }}</div>
+        </div>
+        <br>
+        <div class="image">
+            {{ form.image }}
+        </div>
+        <div class='container'> 
+            <input class="btn btn-primary" type="submit" value="Create">
+        </div>
+        
+    </form>
+{% endblock %}

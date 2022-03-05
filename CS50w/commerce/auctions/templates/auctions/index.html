@@ -1,0 +1,44 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style>
+    img{
+        max-width:230px;
+        max-height:100px;
+        width: auto;
+        height: auto;
+        margin: 0 50px;
+    }
+    .container{
+        border-bottom: solid black 2px;
+        margin: 20px 0;
+        padding: 30px;
+    }
+    .info{
+        margin: 0 50px;
+    }
+</style>
+    <h2>Active Listings</h2>
+
+    {% for item in items %}
+
+    <div class="container row" style="background-color:azure;"> 
+        <a href="{% url 'auctions:listings' item.id %}" class="col-5">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="images">  
+            {% endif %}
+        </a>
+        <div class='col-5 info'>
+            <a href="{% url 'auctions:listings' item.id %}">{{ item.item_name }}</a>
+            <div> ${{ item.price }}</div>
+            <div> By: {{ item.creator }}</div>
+            <div> {{ item.date_uploaded|date:'M d, Y H:i' }}</div>
+        </div>
+    </div>
+    {% if item.has_ended %}
+    <p>The Auction has Ended</p>
+    {% endif %}
+    {% empty %}
+        <p>Nothing has been listed</p>
+    {% endfor %}
+{% endblock %}
